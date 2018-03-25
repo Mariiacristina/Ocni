@@ -4,7 +4,7 @@ import (
   "net/http"
   //"github.com/gorilla/mux"
   "log"
-  "github.com/Mariiacristina/Ocni/API/rutas"
+  "Ovni/API/rutas"
 )
 
 func main() {

@@ -4,8 +4,8 @@ import (
   "net/http"
   "log"
   "encoding/json"
-  "github.com/Mariiacristina/Ocni/API/model"
-  "github.com/Mariiacristina/Ocni/API/shema"
+  "Ovni/API/model"
+  "Ovni/API/shema"
 )
 //var (
 //  err error
@@ -32,7 +32,7 @@ func PostMarciano(w http.ResponseWriter, r *http.Request) {
 
 
 //get marciano
-func GetMarciano(w http.ResponseWriter, r *http.Request) {
+func GetMarciano(w http.ResponseWriter, r *http.Request)(res []byte){
   v := r.URL.Query()
   id := v.Get("id")
   log.Println("vamos a obtener un marciano de id: ", id)
@@ -43,9 +43,13 @@ func GetMarciano(w http.ResponseWriter, r *http.Request) {
     return
   } else {
     log.Println(marcianoDeVio)
-  }
-
-
+    res,errjson := json.Marshal(marcianoDeVio)
+        if errjson != nil {
+            log.Println(errjson)
+              http.Error(w, "Internal server error", http.StatusInternalServerError)
+              return}
+    return res
+    }
 }
 
 func DeleteMarciano(w http.ResponseWriter, r *http.Request) {
