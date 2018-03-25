@@ -14,7 +14,7 @@ var (
 )
 
 func GetMarcianos(){
-  log.Println("LLEGO AL MODELO, GET MARCIANOOOSSSSS") 
+  log.Println("LLEGO AL MODELO, GET MARCIANOOOSSSSS")
 }
 
 //inserta un marciano, mayuscula pq es public
@@ -37,6 +37,12 @@ func GetMarciano(id string)(row schema.Marciano,err error){
   return ScanValue, err
 }
 
-func DeleteMarciano(id string){
+func DeleteMarciano(id string)(row schema.Marciano,err error){
+  connection.Connect()
+  idNumber,_ := strconv.Atoi(id)
   log.Println("LLEGO AL MODELO, DELETE MARCIANO")
+  var ScanValue schema.Marciano
+  err = db.QueryRow("DELETE FROM marcianos WHERE id =?",idNumber).Scan(&ScanValue)
+  connection.Disconnect()
+  return ScanValue,err
 }

@@ -57,7 +57,13 @@ func GetMarciano(w http.ResponseWriter, r *http.Request){
 func DeleteMarciano(w http.ResponseWriter, r *http.Request) {
   v := r.URL.Query()
   id := v.Get("id")
-
   log.Println("Vamos a deletear a un marciano de id: ",id)
-  model.DeleteMarciano(id)
+  marcianoDeVio,err := model.DeleteMarciano(id)
+  if err != nil {
+    log.Println(err)
+    http.Error(w, "Internal server error", http.StatusInternalServerError)
+    return
+  } else {
+    log.Println("se elimino a: ",marcianoDeVio)
+          }
 }
