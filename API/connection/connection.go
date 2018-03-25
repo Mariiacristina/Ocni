@@ -1,23 +1,14 @@
 package connection
 
-import(
-  "log"
-//  "database/sql"
-
+import (
+	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
 )
 
-
-//variables para la conección
-var (
-	//db  *sql.DB
-)
-
-func Connect(){
-  log.Println("conectando a la base de dators...")
-//  db, err := sql.Open("mysql","root:password@tcp(127.0.0.1:3306)/marcianos")
-}
-
-func Disconnect(){
-  log.Println("desconectando de la base de dators...")
-//  err = db.Close()
+func main() {
+	db, err := sql.Open("psql","gkeppswcmlwpxe:be21b2bda8836c06764653af84916f2ef6b987d24bc6bc4491f8a0e404759c09@tcp(ec2-107-20-249-48.compute-1.amazonaws.com:5432)/delm769cqht311")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
 }
