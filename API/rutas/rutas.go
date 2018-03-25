@@ -2,7 +2,7 @@ package rutas
 
 import (
   "github.com/gorilla/mux"
-  "Ovni/API/controller"
+  "github.com/Mariiacristina/Ocni/API/controller"
   "net/http"
 )
 

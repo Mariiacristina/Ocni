@@ -4,8 +4,8 @@ import (
   "net/http"
   "log"
   "encoding/json"
-  "Ovni/API/model"
-  "Ovni/API/shema"
+  "github.com/Mariiacristina/Ocni/API/model"
+  "github.com/Mariiacristina/Ocni/API/shema"
 )
 //var (
 //  err error
@@ -36,11 +36,13 @@ func GetMarciano(w http.ResponseWriter, r *http.Request) {
   v := r.URL.Query()
   id := v.Get("id")
   log.Println("vamos a obtener un marciano de id: ", id)
-  err := model.GetMarciano(id)
+  marcianoDeVio, err := model.GetMarciano(id)
   if err != nil {
     log.Println(err)
     http.Error(w, "Internal server error", http.StatusInternalServerError)
     return
+  } else {
+    log.Println(marcianoDeVio)
   }
 
 

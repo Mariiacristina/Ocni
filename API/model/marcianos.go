@@ -3,8 +3,8 @@ package model
 import(
  "database/sql"
   "log"
-  "Ovni/API/shema"
-  "Ovni/API/connection"
+  "github.com/Mariiacristina/Ocni/API/shema"
+  "github.com/Mariiacristina/Ocni/API/connection"
   "strconv"
 )
 
@@ -29,11 +29,12 @@ func InsertMarciano(alien schema.Marciano)(err error){
 
 func GetMarciano(id string)(row schema.Marciano,err error){
   connection.Connect()
-  id,_ = strconv.Atoi(id)
+  idNumber, _ := strconv.Atoi(id)
   log.Println("LLEGO AL MODELO, GET MARCIANO")
-  row, err = db.QueryRow("SELECT id, nombre FROM marcianos WHERE id=?",id).Scan(&id,&row.nombre)
+  var scanValue schema.Marciano
+  err = db.QueryRow("SELECT id, nombre FROM marcianos WHERE id = ?", idNumber).Scan(&scanValue)
   connection.Disconnect()
-  return row,err
+  return scanValue, err
 }
 
 func DeleteMarciano(id string){
