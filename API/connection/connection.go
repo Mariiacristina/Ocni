@@ -15,7 +15,8 @@ var (
 
 func Connect()(db *sql.DB){
   log.Println("conectando a la base de dators...")
-  db, errbdd := sql.Open("mysql", "server=sql10.freemysqlhosting.net;user id=sql10228844;password=HzESsF45YT;")
+  //db, errbdd := sql.Open("mysql", "server=sql10.freemysqlhosting.net;user id=sql10228844;password=HzESsF45YT;")
+  db, errbdd := sql.Open("mysql", "sql10228844:HzESsF45YT@tcp(sql10.freemysqlhosting.net:3306)/sql10228844")
   if (errbdd != nil){
     log.Println("ERROR BDD")
     return
