@@ -20,14 +20,16 @@ func GetMarcianos(){
 func InsertMarciano(alien schema.Marciano)(err error){
   connection.Connect()
   log.Println("LLEGO AL MODELO,  INSERT MARCIANO")
-  err = db.QueryRow("INSERT INTO marcianos VALUES (?,?)").Scan(alien.Id,alien.Nombre)
+  _,err = db.Exec("INSERT INTO marcianos VALUES (?,?)",alien.Id,alien.Nombre)
   connection.Disconnect()
   return err
 }
 
 
 func GetMarciano(id string){
+  connection.Connect()
   log.Println("LLEGO AL MODELO, GET MARCIANO")
+
 }
 
 func DeleteMarciano(id string){
