@@ -14,7 +14,7 @@ var (
 )
 
 func GetMarcianos(){
-  log.Println("LLEGO AL MODELO, GET MARCIANOOOSSSSS")
+  log.Println("LLEGO AL MODELO, GET MARCIANOOOSSSSS") 
 }
 
 //inserta un marciano, mayuscula pq es public

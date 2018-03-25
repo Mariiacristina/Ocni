@@ -32,7 +32,7 @@ func PostMarciano(w http.ResponseWriter, r *http.Request) {
 
 
 //get marciano
-func GetMarciano(w http.ResponseWriter, r *http.Request)(res []byte){
+func GetMarciano(w http.ResponseWriter, r *http.Request){
   v := r.URL.Query()
   id := v.Get("id")
   log.Println("vamos a obtener un marciano de id: ", id)
@@ -47,8 +47,10 @@ func GetMarciano(w http.ResponseWriter, r *http.Request)(res []byte){
         if errjson != nil {
             log.Println(errjson)
               http.Error(w, "Internal server error", http.StatusInternalServerError)
-              return}
-    return res
+              return
+            }
+            w.Header().Set("Content-Type", "application/json")
+            w.Write(res)
     }
 }
 
