@@ -13,4 +13,7 @@ func main() {
 
   n := rutas.RouteringNaves()
   log.Fatal(http.ListenAndServe(":8000",n))
+
+  a := rutas.RouteringAero()
+  log.Fatal(http.ListenAndServe(":8000",a))
 }

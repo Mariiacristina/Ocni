@@ -24,12 +24,27 @@ func RouteringNaves() (http.Handler) {
   router_naves := mux.NewRouter()
 ////////////NAVE NODRIZA //////////////////////////////////////////////////////
   //obtener varias naves
-  router_naves.HandlFunc("/Nave", controller.GetNaves).Methods("GET")
+  router_naves.HandleFunc("/Nave", controller.GetNaves).Methods("GET")
   //postear una nave
-  router_naves.HandlFunc("/Nave",controller.PostNave).Methods("POST")
+  router_naves.HandleFunc("/Nave",controller.PostNave).Methods("POST")
   //obtener una nave
-  router_naves.HandlFunc("/Nave/{id}", controller.GetNave).Methods("GET")
+  router_naves.HandleFunc("/Nave/{id}", controller.GetNave).Methods("GET")
   //eliminar una nave
   router_naves.HandleFunc("/Nave/{id}", controller.DeleteNave).Methods("DELETE")
   return router_naves
+}
+
+
+func RouteringAero()(http.Handler){
+router_aero := mux.NewRouter()
+///////////AERONAVE//////////////////////////////////////////////////////////////
+//obtener varias aeronave
+router_aero.HandleFunc("/Aero", controller.GetAeros).Methods("GET")
+//postear una aeronave
+router_aero.HandleFunc("/Aero", controller.PostAero).Methods("POST")
+//obtener una aeronave
+router_aero.HandleFunc("/Aero/{id}", controller.GetAero).Methods("GET")
+//eliminar una AERONAVE
+router_aero.HandleFunc("/Aero/{id}", controller.DeleteAero).Methods("DELETE")
+return router_aero
 }
