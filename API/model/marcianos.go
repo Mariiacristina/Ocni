@@ -27,7 +27,7 @@ func InsertMarciano(alien schema.Marciano)(err error){
 }
 
 
-func GetMarciano(id string)(row schema.Marciano,err error){
+func GetMarciano(id string)(row Marciano,err error){
   connection.Connect()
   id,_ = strconv.Atoi(id)
   log.Println("LLEGO AL MODELO, GET MARCIANO")
