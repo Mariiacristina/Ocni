@@ -21,7 +21,7 @@ func GetMarcianos(){
 func InsertMarciano(alien schema.Marciano)(err error){
   connection.Connect()
   log.Println("LLEGO AL MODELO,  INSERT MARCIANO")
-  _,err = db.Exec("INSERT INTO marcianos VALUES (?,?)",alien.Id,alien.Nombre)
+  _,err = db.Exec("INSERT INTO marciano VALUES (?,?)",alien.Id,alien.Nombre)
   connection.Disconnect()
   return err
 }
@@ -32,7 +32,7 @@ func GetMarciano(id string)(row schema.Marciano,err error){
   idNumber, _ := strconv.Atoi(id)
   log.Println("LLEGO AL MODELO, GET MARCIANO")
   var ScanValue schema.Marciano
-  err = db.QueryRow("SELECT id, nombre FROM marcianos WHERE id = ?", idNumber).Scan(&ScanValue)
+  err = db.QueryRow("SELECT id, nombre FROM marciano WHERE id = ?", idNumber).Scan(&ScanValue)
   connection.Disconnect()
   return ScanValue, err
 }
@@ -42,7 +42,7 @@ func DeleteMarciano(id string)(row schema.Marciano,err error){
   idNumber,_ := strconv.Atoi(id)
   log.Println("LLEGO AL MODELO, DELETE MARCIANO")
   var ScanValue schema.Marciano
-  err = db.QueryRow("DELETE FROM marcianos WHERE id =?",idNumber).Scan(&ScanValue)
+  err = db.QueryRow("DELETE FROM marciano WHERE id =?",idNumber).Scan(&ScanValue)
   connection.Disconnect()
   return ScanValue,err
 }

@@ -8,6 +8,9 @@ import (
 )
 
 func main() {
-  r := rutas.RouteringMarcianos()
-	log.Fatal(http.ListenAndServe(":8000",r))
+  m := rutas.RouteringMarcianos()
+	log.Fatal(http.ListenAndServe(":8000",m))
+
+  n := rutas.RouteringNaves()
+  log.Fatal(http.ListenAndServe(":8000",n))
 }

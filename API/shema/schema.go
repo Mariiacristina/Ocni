@@ -6,3 +6,8 @@ type Marciano struct {
     Id int   `json:"id,omitempty"`
     Nombre string `json:"nombre,omitempty"`
 }
+
+type Nave struct{
+  Id int   `json:"id,omitempty"`
+  Nombre string `json:"nombre,omitempty"`
+}
