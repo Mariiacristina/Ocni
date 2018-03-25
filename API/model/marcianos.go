@@ -21,8 +21,11 @@ func GetMarcianos(){
 func InsertMarciano(alien schema.Marciano)(err error){
   connection.Connect()
   log.Println("LLEGO AL MODELO,  INSERT MARCIANO")
-  _,err = db.Exec("INSERT INTO marciano VALUES (?,?)",alien.Id,alien.Nombre)
-  log.Println("LOGRE INSERTAR")
+  err = db.Ping()
+  _,err = db.Exec("INSERT INTO MARCIANO VALUES (?,?)",alien.Id,alien.Nombre)
+  if (err != nil){
+    log.Println("NO INSERTO")
+  }
   connection.Disconnect()
   return err
 }

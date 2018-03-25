@@ -11,13 +11,13 @@ import(
 //variables para la conección
 var (
 	db  *sql.DB
-  err error
+  errbdd error
 )
 
 func Connect(){
   log.Println("conectando a la base de dators...")
-  _, err := sql.Open("mysql", "server=sql10.freemysqlhosting.net;user id=sql10228844;password=HzESsF45YT;")
-  if (err != nil){
+  _, errbdd := sql.Open("mysql", "server=sql10.freemysqlhosting.net;user id=sql10228844;password=HzESsF45YT;")
+  if (errbdd != nil){
     log.Println("ERROR BDD")
   } else {
   log.Println("CONECCION UN EXITO")
@@ -26,8 +26,8 @@ func Connect(){
 
 func Disconnect(){
   log.Println("desconectando de la base de dators...")
-  err = db.Close()
-  if (err != nil){
+  errbdd = db.Close()
+  if (errbdd != nil){
     log.Println("ERROR BDD")
   }
 }
