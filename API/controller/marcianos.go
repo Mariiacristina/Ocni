@@ -36,8 +36,12 @@ func GetMarciano(w http.ResponseWriter, r *http.Request) {
   v := r.URL.Query()
   id := v.Get("id")
   log.Println("vamos a obtener un marciano de id: ", id)
-model.GetMarciano(id)
-
+  err := model.GetMarciano(id)
+  if err != nil {
+    log.Println(err)
+    http.Error(w, "Internal server error", http.StatusInternalServerError)
+    return
+  }
 
 
 }
