@@ -8,9 +8,17 @@ import (
 
 func RouteringMarcianos() (http.Handler) {
 	router := mux.NewRouter()
+
+  //obtener varios marcianos
 	router.HandleFunc("/Marciano", controller.GetMarcianos).Methods("GET")
-  router.HandleFunc("/Marciano", controller.CreateMarciano).Methods("POST")
+  //postear un marciano
+  router.HandleFunc("/Marciano", controller.PostMarciano).Methods("POST")
+  //obtener un marciano
 	router.HandleFunc("/Marciano/{id}", controller.GetMarciano).Methods("GET")
-	router.HandleFunc("/Marciano/{id}", controller.DeleteMarciano).Methods("DELETE")
+  //eliminar un marciano
+  router.HandleFunc("/Marciano/{id}", controller.DeleteMarciano).Methods("DELETE")
+
+
+
 	return router
 }
