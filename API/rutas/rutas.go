@@ -58,3 +58,12 @@ func RouteringViaje()(http.Handler){
   router_viaje.HandleFunc("/Viaje/{id}", controller.PostViaje).Methods("DELETE")
   return router_viaje
 }
+
+
+func RouteringRevision()(http.Handler){
+  /////////////////REVISION//////////////////////////////////////////////////////
+  router_revision := mux.NewRouter()
+  //insert REVISION
+  router_revision.HandleFunc("/Revision", controller.PostRevision).Methods("POST")
+  return router_revision
+}

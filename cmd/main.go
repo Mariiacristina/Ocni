@@ -16,4 +16,10 @@ func main() {
 
   a := rutas.RouteringAero()
   log.Fatal(http.ListenAndServe(":8000",a))
+
+  v := rutas.RouteringViaje()
+  log.Fatal(http.ListenAndServe(":8000",v))
+
+  r := rutas.RouteringRevision()
+  log.Fatal(http.ListenAndServe(":8000",r))
 }

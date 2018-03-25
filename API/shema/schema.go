@@ -25,3 +25,10 @@ type Viaje struct {
   Id_Aero int `json:"id_aero,omitempty"`
   Fecha string `json:"fecha,omitempty"`
 }
+
+type Revision struct {
+  Id int `json:"id,omitempty"`
+  Nombre_r string `json:"nombre_r,omitempty"`
+  Id_Aero int `json:"id_aero,omitempty"`
+  Fecha string `json:"fecha,omitempty"`
+}
