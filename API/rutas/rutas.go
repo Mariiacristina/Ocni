@@ -48,3 +48,13 @@ router_aero.HandleFunc("/Aero/{id}", controller.GetAero).Methods("GET")
 router_aero.HandleFunc("/Aero/{id}", controller.DeleteAero).Methods("DELETE")
 return router_aero
 }
+
+func RouteringViaje()(http.Handler){
+  router_viaje := mux.NewRouter()
+  /////////////VIAJEEES/////////////////////////////////////////////////////////
+  //insert viaje
+  router_viaje.HandleFunc("/Viaje", controller.PostViaje).Methods("POST")
+  //delete Viaje
+  router_viaje.HandleFunc("/Viaje/{id}", controller.PostViaje).Methods("DELETE")
+  return router_viaje
+}

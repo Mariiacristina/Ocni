@@ -19,3 +19,9 @@ type Aero struct {
   Nave_d string `json:"nave_d,omitempty"`
   Cant_max int `json:"cant_max,omitempty"`
 }
+
+type Viaje struct {
+  Id_Pasajero int `json:"id_pasajero,omitempty"`
+  Id_Aero int `json:"id_aero,omitempty"`
+  Fecha string `json:"fecha,omitempty"`
+}
