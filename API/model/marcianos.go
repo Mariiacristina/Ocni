@@ -22,6 +22,7 @@ func InsertMarciano(alien schema.Marciano)(err error){
   connection.Connect()
   log.Println("LLEGO AL MODELO,  INSERT MARCIANO")
   _,err = db.Exec("INSERT INTO marciano VALUES (?,?)",alien.Id,alien.Nombre)
+  log.Println("LOGRE INSERTAR")
   connection.Disconnect()
   return err
 }

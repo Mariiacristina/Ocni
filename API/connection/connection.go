@@ -1,14 +1,33 @@
+
 package connection
 
-import (
-	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+import(
+  "log"
+  "database/sql"
+  _"github.com/go-sql-driver/mysql"
 )
 
-func main() {
-	db, err := sql.Open("psql","gkeppswcmlwpxe:be21b2bda8836c06764653af84916f2ef6b987d24bc6bc4491f8a0e404759c09@tcp(ec2-107-20-249-48.compute-1.amazonaws.com:5432)/delm769cqht311")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
+
+//variables para la conección
+var (
+	db  *sql.DB
+  err error
+)
+
+func Connect(){
+  log.Println("conectando a la base de dators...")
+  _, err := sql.Open("mysql", "server=sql10.freemysqlhosting.net;user id=sql10228844;password=HzESsF45YT;")
+  if (err != nil){
+    log.Println("ERROR BDD")
+  } else {
+  log.Println("CONECCION UN EXITO")
+  }
+}
+
+func Disconnect(){
+  log.Println("desconectando de la base de dators...")
+  err = db.Close()
+  if (err != nil){
+    log.Println("ERROR BDD")
+  }
 }
