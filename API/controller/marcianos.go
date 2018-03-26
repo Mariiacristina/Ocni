@@ -1,15 +1,13 @@
 package controller
 
-import (
+import(
   "net/http"
   "log"
   "encoding/json"
   "Ovni/API/model"
   "Ovni/API/shema"
+  "github.com/gorilla/mux"
 )
-//var (
-//  err error
-//)
 
 //obtener marcianoSSS
 func GetMarcianos(w http.ResponseWriter, r *http.Request) {
@@ -20,7 +18,7 @@ func GetMarcianos(w http.ResponseWriter, r *http.Request) {
 func PostMarciano(w http.ResponseWriter, r *http.Request) {
   var alien schema.Marciano
   _=json.NewDecoder(r.Body).Decode(&alien)
-  log.Println("vamos a insertar: ", alien.Nombre)
+  log.Println("vamos a insertar: ", alien)
   err := model.InsertMarciano(alien)
   if err != nil {
     log.Println(err)
@@ -33,8 +31,8 @@ func PostMarciano(w http.ResponseWriter, r *http.Request) {
 
 //get marciano
 func GetMarciano(w http.ResponseWriter, r *http.Request){
-  v := r.URL.Query()
-  id := v.Get("id")
+  vars := mux.Vars(r)
+  id := vars["id"]
   log.Println("vamos a obtener un marciano de id: ", id)
   marcianoDeVio, err := model.GetMarciano(id)
   if err != nil {
@@ -55,10 +53,10 @@ func GetMarciano(w http.ResponseWriter, r *http.Request){
 }
 
 func DeleteMarciano(w http.ResponseWriter, r *http.Request) {
-  v := r.URL.Query()
-  id := v.Get("id")
-  log.Println("Vamos a deletear a un marciano de id: ",id)
-  marcianoDeVio,err := model.DeleteMarciano(id)
+  vars := mux.Vars(r)
+  id_marciano := vars["id"]
+  log.Println("Vamos a deletear a un marciano de id: ",id_marciano)
+  marcianoDeVio,err := model.DeleteMarciano(id_marciano)
   if err != nil {
     log.Println(err)
     http.Error(w, "Internal server error", http.StatusInternalServerError)

@@ -6,6 +6,7 @@ import(
   "encoding/json"
   "Ovni/API/model"
   "Ovni/API/shema"
+  "github.com/gorilla/mux"
 )
 
 func GetAeros(w http.ResponseWriter, r *http.Request) {
@@ -16,7 +17,7 @@ func GetAeros(w http.ResponseWriter, r *http.Request) {
 func PostAero(w http.ResponseWriter, r *http.Request) {
   var aeronave schema.Aero
   _=json.NewDecoder(r.Body).Decode(&aeronave)
-  log.Println("vamos a insertar: ", aeronave.Nombre)
+  log.Println("vamos a insertar: ", aeronave)
   err := model.InsertAero(aeronave)
   if err != nil {
     log.Println(err)
@@ -29,8 +30,8 @@ func PostAero(w http.ResponseWriter, r *http.Request) {
 
 //get aeronave
 func GetAero(w http.ResponseWriter, r *http.Request){
-  v := r.URL.Query()
-  id := v.Get("id")
+  vars := mux.Vars(r)
+  id := vars["id"]
   log.Println("vamos a obtener la aronave de id: ", id)
   aeronave, err := model.GetAero(id)
   if err != nil {
@@ -51,7 +52,8 @@ func GetAero(w http.ResponseWriter, r *http.Request){
 }
 
 func DeleteAero(w http.ResponseWriter, r *http.Request) {
-  id := r.URL.Query().Get("id")
+  vars := mux.Vars(r)
+  id := vars["id"]
   log.Println("Vamos a deletear la aeronave de id: ",id)
   aeronave,err := model.DeleteAero(id)
   if err != nil {

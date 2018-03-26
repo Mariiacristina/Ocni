@@ -6,6 +6,7 @@ import(
   "encoding/json"
   "Ovni/API/model"
   "Ovni/API/shema"
+  "github.com/gorilla/mux"
 )
 
 func GetNaves(w http.ResponseWriter, r *http.Request){
@@ -26,8 +27,8 @@ func PostNave(w http.ResponseWriter, r *http.Request){
 }
 
 func GetNave(w http.ResponseWriter, r *http.Request){
-  v := r.URL.Query()
-  id := v.Get("id")
+  vars := mux.Vars(r)
+  id := vars["id"]
   log.Println("vamos a obtener la nave de id: ", id)
   nodriza, err := model.GetNave(id)
   if err != nil {
@@ -48,8 +49,8 @@ func GetNave(w http.ResponseWriter, r *http.Request){
 }
 
 func DeleteNave(w http.ResponseWriter, r *http.Request){
-  v := r.URL.Query()
-  id := v.Get("id")
+  vars := mux.Vars(r)
+  id := vars["id"]
   log.Println("Vamos a deletear la nave de id: ",id)
   nodriza,err := model.DeleteNave(id)
   if err != nil {

@@ -13,7 +13,7 @@ func InsertRevision(paco schema.Revision)(err error){
   db := connection.Connect()
   t := time.Now()
   log.Println("LLEGO AL MODELO,  INSERT REVISION")
-  _,err = db.Exec("INSERT INTO REVISION VALUES (?,?,?,?)",paco.Id,paco.Nombre_r,paco.Id_Aero,t)
+  _,err = db.Exec("INSERT INTO REVISION VALUES (?,?,?,?)",paco.Id_revision,paco.Nombre_r,paco.Id_Aero,t)
   connection.Disconnect(db)
   return err
 }

@@ -33,7 +33,12 @@ func GetAero(id string)(row schema.Aero,err error){
   idNumber, _ := strconv.Atoi(id)
   log.Println("LLEGO AL MODELO, GET AERONAVE")
   var ScanValue schema.Aero
-  err = db.QueryRow("SELECT id, nombre, nave_origen, nave_destino, cant_max FROM aeronave WHERE id = ?", idNumber).Scan(&ScanValue)
+  err = db.QueryRow("SELECT ID_AERONAVE, NOMBRE, NAVE_ORIGEN, NAVE_DESTINO, CANT_MAX FROM AERONAVE WHERE ID_AERONAVE = ?", idNumber).Scan(&ScanValue.Id,&ScanValue.Nombre,&ScanValue.Nave_o,&ScanValue.Nave_d,&ScanValue.Cant_max)
+  if (err != nil){
+    log.Println("error en el modelo!")
+  }else {
+    log.Println("Se GETEO correctamente")
+  }
   connection.Disconnect(db)
   return ScanValue, err
 }
@@ -44,7 +49,7 @@ func DeleteAero(id string)(row schema.Aero,err error){
   idNumber,_ := strconv.Atoi(id)
   log.Println(idNumber)
   var ScanValue schema.Aero
-  err = db.QueryRow("DELETE FROM AERONAVE WHERE ID_AERONAVE = ?",idNumber).Scan(&ScanValue)
+  err = db.QueryRow("DELETE FROM AERONAVE WHERE ID_AERONAVE = ?",idNumber).Scan(&ScanValue.Id)
   if (err != nil){
     log.Println("error en el modelo!")
   }else {
