@@ -41,10 +41,11 @@ func GetNave(id string)(row schema.Nave,err error){
 
 func DeleteNave(id string)(row schema.Nave,err error){
   db := connection.Connect()
+  log.Println(id)
   idNumber,_ := strconv.Atoi(id)
-  log.Println("LLEGO AL MODELO, DELETE NAVE")
+  log.Println(idNumber)
   var ScanValue schema.Nave
-  err = db.QueryRow("DELETE FROM NAVE_NODRIZA WHERE ID_NODRIZA =?",idNumber).Scan(&ScanValue.Id_nodriza)
+  err = db.QueryRow("DELETE FROM NAVE_NODRIZA WHERE ID_NODRIZA = ?",idNumber).Scan(&ScanValue.Id_nodriza)
   if (err != nil){
     log.Println("error en el modelo!")
   }else {

@@ -21,3 +21,17 @@ func PostRevision(w http.ResponseWriter, r *http.Request) {
   }
 
 }
+
+//get todas las revisiones
+/*func GetRevision(w http.ResponseWriter, r *http.Request){
+  log.Printlm("vamos a imprimir todas las revisiones")
+  err := model.GetRevisiones()
+  if err != nil {
+    log.Println(err)
+    http.Error(w, "Internal server error", http.StatusInternalServerError)
+  }else{
+    log.Println("buena")
+  }
+
+}
+*/

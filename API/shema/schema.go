@@ -4,12 +4,12 @@ package schema
 //Schema del marciano! parte en Mayuscula pq es public
 //tiene q tener el nombre de las columnas de la BDD
 type Marciano struct {
-    Id_marciano int   `json:"id_marciano,omitempty"`
+    Id_marciano int `json:"id_marciano,omitempty"`
     Nombre string `json:"nombre,omitempty"`
 }
 
 type Nave struct{
-  Id_nodriza int   `json:"id_nodriza,omitempty"`
+  Id_nodriza int `json:"id_nodriza,omitempty"`
   Nombre string `json:"nombre,omitempty"`
 }
 
@@ -25,6 +25,8 @@ type Viaje struct {
   Id_Pasajero int `json:"id_pasajero,omitempty"`
   Id_Aero int `json:"id_aero,omitempty"`
   Fecha string `json:"fecha,omitempty"`
+  Id_viaje int `json:"id_viaje,omitempty"`
+  Estado int `json:"estado,omitempty"`
 }
 
 type Revision struct {

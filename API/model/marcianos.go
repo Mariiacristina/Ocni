@@ -39,10 +39,11 @@ func GetMarciano(id string)(row schema.Marciano,err error){
   return ScanValue, err
 }
 
-func DeleteMarciano(id_marciano string)(row schema.Marciano,err error){
+func DeleteMarciano(id string)(row schema.Marciano,err error){
   db := connection.Connect()
-  idNumber,_ := strconv.Atoi(id_marciano)
-  log.Println("LLEGO AL MODELO, DELETE MARCIANO")
+  log.Println(id)
+  idNumber,_ := strconv.Atoi(id)
+  log.Println(idNumber)
   var ScanValue schema.Marciano
   err = db.QueryRow("DELETE FROM MARCIANO WHERE ID_MARCIANO = ?",idNumber).Scan(&ScanValue.Id_marciano)
   if (err != nil){

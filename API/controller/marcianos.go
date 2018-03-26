@@ -18,7 +18,7 @@ func GetMarcianos(w http.ResponseWriter, r *http.Request) {
 func PostMarciano(w http.ResponseWriter, r *http.Request) {
   var alien schema.Marciano
   _=json.NewDecoder(r.Body).Decode(&alien)
-  log.Println("vamos a insertar: ", alien)
+  log.Println("vamos a insertar: ",alien)
   err := model.InsertMarciano(alien)
   if err != nil {
     log.Println(err)
@@ -54,9 +54,9 @@ func GetMarciano(w http.ResponseWriter, r *http.Request){
 
 func DeleteMarciano(w http.ResponseWriter, r *http.Request) {
   vars := mux.Vars(r)
-  id_marciano := vars["id"]
-  log.Println("Vamos a deletear a un marciano de id: ",id_marciano)
-  marcianoDeVio,err := model.DeleteMarciano(id_marciano)
+  id := vars["id"]
+  log.Println("Vamos a deletear a un marciano de id: ",id)
+  marcianoDeVio,err := model.DeleteMarciano(id)
   if err != nil {
     log.Println(err)
     http.Error(w, "Internal server error", http.StatusInternalServerError)
