@@ -16,7 +16,14 @@ func InsertRevision(paco schema.Revision)(err error){
   _,err = db.Exec("INSERT INTO REVISION VALUES (?,?,?,?)",paco.Id_revision,paco.Nombre_r,paco.Id_Aero,t)
   if(err != nil) {
     log.Println("error en el modelo!")
-  }else{ log.Println("Insertando!!")}
+    return err
+  }else{
+  /*  idd_lista := paco.Id_revision
+    rows,err := db.Exec("INSERT INTO LISTA_REVISION(ID_REVISION, ID_MARCIANO, ID_LISTA) SELECT ?,ID_PASAJERO,? FROM VIAJE WHERE ESTADO=1 AND ID_AERONAVE = ? ",paco.Id_revision,idd_lista,paco.Id_Aero)
+    if(err != nil) {
+    log.Println("error en el modelo!")}
+    log.Println(rows)*/
+    log.Println("en reconstruccion :( ")
   connection.Disconnect(db)
-  return err
+  return err}
 }
