@@ -11,6 +11,7 @@ var(
   err1 error
   err2 error
   err3 error
+  err4 error
   cant int
   count int
   count2 int
@@ -31,7 +32,7 @@ func InsertViaje(pasajero schema.Viaje)(err error){
   log.Println("cantidad maxima de pasajeros es: ",cant)
   //cantidad de personas arriba de la aeronave (historica)
   err2 = db.QueryRow("SELECT COUNT(ESTADO) FROM VIAJE WHERE ID_AERONAVE = ? AND ESTADO = 1",pasajero.Id_Aero).Scan(&count)
-  log.Println("cantidad de los que van arriba son: ", count)
+  log.Println("cantidad de los que se han subido son: ", count)
   if (err2 != nil){
     log.Println("error en contar la cantidad de pasajeros")
   }
@@ -42,7 +43,7 @@ func InsertViaje(pasajero schema.Viaje)(err error){
   }
   //total de los que estan arriba
   countt = count - count2
-
+log.Println("cantidad de los que estan arriba: ",countt)
   if(countt+1>cant){
     log.Println("no se puede subir :( hay muchos")
     return
