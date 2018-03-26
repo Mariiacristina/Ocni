@@ -24,7 +24,7 @@ func PostMarciano(w http.ResponseWriter, r *http.Request) {
   err := model.InsertMarciano(alien)
   if err != nil {
     log.Println(err)
-    http.Error(w, "Internal server error", http.StatusInternalServerError)
+    http.Error(w, "Internal server error Lo puse yo jiji", http.StatusInternalServerError)
     return
   }
 
@@ -39,14 +39,14 @@ func GetMarciano(w http.ResponseWriter, r *http.Request){
   marcianoDeVio, err := model.GetMarciano(id)
   if err != nil {
     log.Println(err)
-    http.Error(w, "Internal server error", http.StatusInternalServerError)
+    http.Error(w, "Internal server error lo puse yo jiji", http.StatusInternalServerError)
     return
   } else {
     log.Println(marcianoDeVio)
     res,errjson := json.Marshal(marcianoDeVio)
         if errjson != nil {
             log.Println(errjson)
-              http.Error(w, "Internal server error", http.StatusInternalServerError)
+              http.Error(w, "Internal server error lo puse yo jiji", http.StatusInternalServerError)
               return
             }
             w.Header().Set("Content-Type", "application/json")

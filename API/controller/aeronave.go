@@ -51,8 +51,7 @@ func GetAero(w http.ResponseWriter, r *http.Request){
 }
 
 func DeleteAero(w http.ResponseWriter, r *http.Request) {
-  v := r.URL.Query()
-  id := v.Get("id")
+  id := r.URL.Query().Get("id")
   log.Println("Vamos a deletear la aeronave de id: ",id)
   aeronave,err := model.DeleteAero(id)
   if err != nil {

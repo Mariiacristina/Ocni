@@ -34,7 +34,10 @@ func GetMarciano(id string)(row schema.Marciano,err error){
   idNumber, _ := strconv.Atoi(id)
   log.Println("LLEGO AL MODELO, GET MARCIANO")
   var ScanValue schema.Marciano
-  err = db.QueryRow("SELECT id, nombre FROM marciano WHERE id = ?", idNumber).Scan(&ScanValue)
+  err = db.QueryRow("SELECT ID, NOMBRE FROM MARCIANO WHERE id = ?", idNumber).Scan(&ScanValue)
+  if (err != nil){
+    log.Println("NO OBTUVO")
+  }
   connection.Disconnect(db)
   return ScanValue, err
 }
