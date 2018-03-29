@@ -26,7 +26,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func asignar(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "asignar.gohtml", nil)
-}	
+}
 
 func bajar(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "bajar.gohtml", nil)
