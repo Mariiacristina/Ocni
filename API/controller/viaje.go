@@ -7,9 +7,6 @@ import (
   "Ovni/API/model"
   "Ovni/API/shema"
 )
-//var (
-//  err error
-//)
 
 func PostViaje(w http.ResponseWriter, r *http.Request) {
   var pasajero schema.Viaje

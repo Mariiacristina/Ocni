@@ -43,7 +43,7 @@ func RouteringMarcianos() (http.Handler) {
   router.HandleFunc("/Viaje", controller.PostViaje).Methods("POST")
   //delete Viaje
   router.HandleFunc("/Adios", controller.DeleteViaje).Methods("POST")
-  
+
 
   /////////////////REVISION//////////////////////////////////////////////////////
   //insert REVISION

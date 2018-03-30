@@ -28,16 +28,23 @@
 <script>
 $('#submit')
 .click(function(e){
-e.preventDefault();
 id_pasajero = document.getElementById('I_P').value;
 id_aeronave = document.getElementById('I_A').value;
 var alien = '{"Id_Pasajero":'+id_pasajero+', "Id_Aero": '+id_aeronave+'}';
 json=JSON.parse(alien)
 $.ajax({
 	data: json,
-	url: '/Viaje',
-	type: 'post',
-
+	url: 'http://localhost:8000/Viaje',
+	type: 'POST',
+	beforeSend: function(){
+			window.alert("Procesando, espere porfavor...");
+	},
+	success: function (response){
+		console.log(error);
+	},
+	error: function(){
+		alert("Hubo algun tipo de error.");
+	}
 	});
 });
 </script>
