@@ -31,15 +31,14 @@ $('#boton')
 .click(function(e){
 id_pasajero = document.getElementById('I_P').value;
 id_aeronave = document.getElementById('I_A').value;
-var alien = '{"id_pasajero": id_pasajero, "id_aero": id_aeronave}';
-//json =JSON.parse(alien)
-//console.log(json)
+var alien = '{"id_pasajero": '+id_pasajero+', "id_aero": '+id_aeronave+'}';
+
 $.ajax({
-	data: JSON.stringify(alien),
+	data: alien,
 	url: 'http://localhost:8000/Viaje',
 	contentType:"application/json; charset: utf-8",
-	//crossDomain: true,
-	//withCredentials:false,
+	crossDomain: true,
+	withCredentials:false,
 	type: 'post',
 	beforeSend: function(){
 			window.alert("Procesando, espere porfavor...");
