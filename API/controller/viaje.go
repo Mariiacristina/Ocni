@@ -9,6 +9,9 @@ import (
 )
 
 func PostViaje(w http.ResponseWriter, r *http.Request) {
+  w.Header().Set("Content-Type", "text/html; charset=utf-8")
+  w.Header().Set("Access-Control-Allow-Origin", "*")
+  log.Println(r)
   var pasajero schema.Viaje
   _=json.NewDecoder(r.Body).Decode(&pasajero)
   log.Println("vamos a al pasajero en la nave : ", pasajero.Id_Pasajero, pasajero.Id_Aero)

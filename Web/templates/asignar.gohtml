@@ -4,13 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>ASIGNAR</title>
+	<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
 <body>
 
 	<h3>Asignar pasajero</h3>
-
-	<form action="/procesar" method="post">
 
 		<input type="text" name="ID_PASAJERO" id="I_P" placeholder="ID PASAJERO">
 
@@ -20,27 +18,31 @@
 
 		<br><br>
 
-		<input type="submit">
+		<button type="submit" id="boton">
+			Confirmar
+		</button>
 
-	</form>
 
 </body>
 <script>
-$('#submit')
+$('#boton')
 .click(function(e){
 id_pasajero = document.getElementById('I_P').value;
 id_aeronave = document.getElementById('I_A').value;
-var alien = '{"Id_Pasajero":'+id_pasajero+', "Id_Aero": '+id_aeronave+'}';
-json=JSON.parse(alien)
+var alien = '{"id_pasajero": '+id_pasajero+', "id_aero": '+id_aeronave+'}';
+json =JSON.parse(alien)
+console.log(json)
 $.ajax({
 	data: json,
-	url: 'http://localhost:8000/Viaje',
-	type: 'POST',
+	url: 'http://localhost:4242/Viaje',
+	crossDomain: true,
+	withCredentials:false,
+	type: 'post',
 	beforeSend: function(){
 			window.alert("Procesando, espere porfavor...");
 	},
 	success: function (response){
-		console.log(error);
+		console.log(response);
 	},
 	error: function(){
 		alert("Hubo algun tipo de error.");
