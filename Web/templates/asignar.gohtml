@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>ASIGNAR</title>
 	<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
 </head>
 <body>
 
@@ -22,21 +25,21 @@
 			Confirmar
 		</button>
 
-
 </body>
 <script>
 $('#boton')
 .click(function(e){
 id_pasajero = document.getElementById('I_P').value;
 id_aeronave = document.getElementById('I_A').value;
-var alien = '{"id_pasajero": '+id_pasajero+', "id_aero": '+id_aeronave+'}';
-json =JSON.parse(alien)
-console.log(json)
+var alien = '{"id_pasajero": id_pasajero, "id_aero": id_aeronave}';
+//json =JSON.parse(alien)
+//console.log(json)
 $.ajax({
-	data: json,
-	url: 'http://localhost:4242/Viaje',
-	crossDomain: true,
-	withCredentials:false,
+	data: JSON.stringify(alien),
+	url: 'http://localhost:8000/Viaje',
+	contentType:"application/json; charset: utf-8",
+	//crossDomain: true,
+	//withCredentials:false,
 	type: 'post',
 	beforeSend: function(){
 			window.alert("Procesando, espere porfavor...");

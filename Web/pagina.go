@@ -17,7 +17,7 @@ func main() {
 	http.HandleFunc("/bajar", bajar)
 	http.HandleFunc("/aeronave", aeronave)
 	http.HandleFunc("/revision", revision)
-	http.ListenAndServe(":8000", nil)
+	http.ListenAndServe(":8080", nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {

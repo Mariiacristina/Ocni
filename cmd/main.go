@@ -8,6 +8,6 @@ import (
 
 func main() {
   m := rutas.RouteringMarcianos()
-	log.Fatal(http.ListenAndServe(":4242",m))
+	log.Fatal(http.ListenAndServe(":8000",m))
 
 }
